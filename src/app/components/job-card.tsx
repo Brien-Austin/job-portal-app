@@ -3,6 +3,7 @@ import Image from 'next/image';
 import { UserRoundPlus, Building2, Layers } from 'lucide-react';
 import { postedAt } from '../utils/posted-time';
 import { JobListing } from '@/types/job';
+import { convertToLakhs } from '../utils/convert-to-l';
 
 const JobCard:React.FC<JobListing> = ({ 
   imageUrl, 
@@ -40,7 +41,7 @@ const JobCard:React.FC<JobListing> = ({
         <div className="flex items-center justify-evenly">
           <div className='text-[#5A5A5A] flex items-center text-[14px] mt-3 gap-1'>
             <UserRoundPlus size={15}/>
-            <h1 className='text-[16px]'>1-3 yr</h1>
+            <h1 className='text-[16px]'>1-3 yr Exp</h1>
           </div>
           <div className='text-[#5A5A5A] flex items-center text-[14px] mt-3 gap-1'>
             <Building2 size={15}/>
@@ -48,7 +49,7 @@ const JobCard:React.FC<JobListing> = ({
           </div>
           <div className='text-[#5A5A5A] flex items-center text-[14px] mt-3 gap-1'>
             <Layers size={15}/>
-            <h1 className='text-[16px]'>{maxSalary}LPA</h1>
+            <h1 className='text-[16px]'>{convertToLakhs(maxSalary)}</h1>
           </div>
         </div>
 
