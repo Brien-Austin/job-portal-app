@@ -41,7 +41,7 @@ const CreateJob = () => {
      
       reset();
       close();
-      router.push("/")
+      router.replace("/")
 
      
 
