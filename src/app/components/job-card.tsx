@@ -5,6 +5,7 @@ import { UserRoundPlus, Building2, Layers } from 'lucide-react';
 import { postedAt } from '../utils/posted-time';
 import { JobListing } from '@/types/job';
 import { convertToLakhs } from '../utils/convert-to-l';
+import DescriptionPoints from './ui/description';
 
 const JobCard:React.FC<JobListing> = ({ 
   imageUrl, 
@@ -55,9 +56,9 @@ const JobCard:React.FC<JobListing> = ({
         </div>
 
         {/* Job Description */}
-        <ul className='list-disc '>
-        <li className='text-[14px] line-clamp-4 text-[#555555] mt-5'>{jobDescription}</li>
-        </ul>
+
+       <DescriptionPoints text={jobDescription}/>
+
       
       </div>
 

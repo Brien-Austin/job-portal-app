@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
-import { Briefcase, ChevronDown } from "lucide-react";
+import { Briefcase, ChevronDown, ChevronUp } from "lucide-react";
 import { useRouter, usePathname, useSearchParams } from "next/navigation";
 import qs from "query-string";
 
@@ -43,26 +43,26 @@ const JobTypeDropdown: React.FC = () => {
       },
     });
 
-    // Update URL and Redux state
+   
     router.push(url);
 
     setShowDropdown(false);
   };
 
   return (
-    <div className="px-5 relative flex items-center justify-between w-1/4 gap-2 pr-4 border-r-[2px] border-[#EAEAEA] h-[48px]">
-      <div className="flex items-center gap-2">
+    <div  className="px-5 cursor-pointer relative flex items-center justify-between w-1/4 gap-2 pr-4 border-r-[2px] border-[#EAEAEA] h-[48px]">
+      <div   onClick={toggleDropdown}     className="flex  items-center gap-2 w-full">
         <Briefcase className="text-[#636363]" size={24} />
         <span className="text-[16px] text-[#686868]">
           {currentJobType || "Job Type"}
         </span>
       </div>
       <button 
-        onClick={toggleDropdown} 
+    
         className="flex items-center"
         aria-label="Toggle job type dropdown"
       >
-        <ChevronDown className="text-[#636363]" size={20} />
+        {!showDropdown ? <ChevronDown className="text-[#636363]" size={20} />: <ChevronUp className="text-[#636363]" size={20} /> }
       </button>
 
       {/* Dropdown */}

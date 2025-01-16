@@ -1,22 +1,24 @@
 import React, { useState } from "react";
 import { ChevronDown } from "lucide-react";
-import { FieldErrors, UseFormRegister } from "react-hook-form";
+import { FieldErrors, UseFormRegister, UseFormSetValue } from "react-hook-form";
 import { JobFormData } from "@/types/job";
 
 interface JobTypeSelectProps {
   register: UseFormRegister<JobFormData>;
   errors: FieldErrors<JobFormData>;
+    setValue: UseFormSetValue<JobFormData>;
 }
 
-const JobTypeSelect = ({ register, errors }: JobTypeSelectProps) => {
+const JobTypeSelect = ({ register, errors,setValue }: JobTypeSelectProps) => {
   const [isOpen, setIsOpen] = useState(false);
-  const [selectedValue, setSelectedValue] = useState("Full-time");
+  const [selectedValue, setSelectedValue] = useState("");
 
   const toggleDropdown = () => {
     setIsOpen((prev) => !prev);
   };
 
   const handleSelect = (value: string) => {
+    setValue("jobType", value)
     setSelectedValue(value);
     setIsOpen(false);
   };

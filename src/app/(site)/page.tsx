@@ -11,7 +11,7 @@ import { useSearchParams } from "next/navigation";
 const App = () => {
 
   const searchParams = useSearchParams();
-  // Get all filter variables from url
+  // Get all filte variables from url
   const title = searchParams.get('jobTitle') || '';
   const location = searchParams.get('location') || ''
   const jobType = searchParams.get('jobType') || '';
@@ -37,24 +37,26 @@ const App = () => {
   // Filtering functions
   const filteredJobs = useMemo(() => {
     if (!jobs) return [];
-    if (!title.trim() && !location.trim() && !jobType.trim()) return jobs;
-    
+    if (!title.trim() && !location.trim() && !jobType.trim() && !maxSalary.trim()) return jobs;
+  
     return jobs.filter((job) => {
       const titleMatch = !title.trim() || 
         job.jobTitle.toLowerCase().includes(title.toLowerCase().trim());
-      
+  
       const locationMatch = !location.trim() || 
         job.location.toLowerCase() === location.toLowerCase().trim();
-
-        const salaryMatch = !maxSalary.trim() || (job.maxSalary / 12) / 1000 < parseFloat(maxSalary);
-
-      
+  
+      const salaryMatch = !maxSalary.trim() || (job.maxSalary / 12) / 1000 <= parseFloat(maxSalary);
+  
       const jobTypeMatch = !jobType.trim() || 
         job.jobType.toLowerCase() === jobType.toLowerCase().trim();
-      
-      return titleMatch && locationMatch && jobTypeMatch && salaryMatch;
+  
+      return titleMatch && locationMatch && salaryMatch && jobTypeMatch;
     });
-  }, [jobs, title, location, jobType,maxSalary]);
+  }, [jobs, title, location, jobType, maxSalary]);
+  
+
+
 
 
   if (isLoading) {

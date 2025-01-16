@@ -111,7 +111,7 @@ const CreateJob = () => {
                 errors={errors}
               />
                 {/* Job Type - Enum[ 'Remote', 'Full-time','Part-time' .... ] */}
-              <JobTypeSelect register={register} errors={errors} />
+              <JobTypeSelect setValue={setValue} register={register} errors={errors} />
               {/* Salary Range - min and max salary */}
               <SalaryRange register={register} errors={errors} />
 

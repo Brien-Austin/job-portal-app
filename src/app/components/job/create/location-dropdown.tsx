@@ -22,7 +22,7 @@ const LocationDropdown: React.FC<LocationDropdownProps> = ({
   const [showDropdown, setShowDropdown] = useState(false);
 
   const handleSelect = (country: string) => {
-    setValue('location', country); // Update the form state
+    setValue('location', country); 
     setShowDropdown(false);
   };
 

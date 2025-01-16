@@ -24,13 +24,12 @@ const SalarySlider = () => {
 
   const handleChange = (newValue: number) => {
     setValue(newValue);
-    
-    // Debounce the URL update and dispatch to prevent too many updates
+ // debouncing
     const timeoutId = setTimeout(() => {
-      // Get current search parameters
+ 
       const current = Object.fromEntries(searchParams.entries());
       
-      // Create new URL with updated salary
+     
       const url = qs.stringifyUrl({
         url: pathname,
         query: {
@@ -41,7 +40,7 @@ const SalarySlider = () => {
 
       router.push(url);
     
-    }, 100); // Small delay to prevent rapid updates
+    }, 100); 
 
     return () => clearTimeout(timeoutId);
   };
@@ -50,7 +49,7 @@ const SalarySlider = () => {
     <div className="flex flex-col px-5 pr-4 border-[#EAEAEA] h-[48px] w-full max-w-[400px]">
       <div className="flex gap-5 items-start justify-between">
         <h1 className="text-[16px] text-[#686868]">Salary Per Month</h1>
-        <h1 className="text-[16px] text-[#686868]">{`₹${value}k - ₹${value + 20}k`}</h1>
+        <h1 className="text-[16px] text-[#686868]">{`₹$0k - ${value}k`}</h1>
       </div>
       <Slider
         color="black"
