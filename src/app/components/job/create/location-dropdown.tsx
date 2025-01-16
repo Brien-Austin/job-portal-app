@@ -48,6 +48,8 @@ const LocationDropdown: React.FC<LocationDropdownProps> = ({
       <label className="text-[20px] font-medium text-[#636363]">
         {label}
       </label>
+
+      {/* Dislaying all  the countries as Dropdown */}
       {showDropdown && (
         <div className="absolute top-[calc(100%)] left-0 w-full">
           <ul className="mt-[4px] z-10 bg-white border border-[#BCBCBC] rounded-[10px] max-h-40 overflow-y-auto w-[376px] shadow-sm">

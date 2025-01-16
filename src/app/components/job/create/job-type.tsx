@@ -49,6 +49,8 @@ const JobTypeSelect = ({ register, errors }: JobTypeSelectProps) => {
       {errors.jobType && (
         <span className="text-red-500 text-sm">{errors.jobType.message}</span>
       )}
+
+      {/* Display all the Job Types as dopdown */}
       {isOpen && (
         <ul className="absolute top-[calc(100%)] left-0 w-full z-10 bg-white border border-[#BCBCBC] rounded-[10px] mt-1 max-h-40 overflow-y-auto w-[376px]">
           {["Full-time", "Part-time", "Remote", "Contract", "Internship"].map(

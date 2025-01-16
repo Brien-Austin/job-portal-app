@@ -85,6 +85,7 @@ const CreateJob = () => {
         <form className="pt-[20px]" onSubmit={handleSubmit(onSubmit)}>
           <div className="container mx-auto gap-4 px-4">
             <div className="grid grid-cols-2 place-items-center gap-4">
+              {/* Job title */}
               <FormInput
                 label="Job Title"
                 register={register}
@@ -92,6 +93,7 @@ const CreateJob = () => {
                 placeholder="Full Stack Developer, Backend Developer"
                 errors={errors}
               />
+              {/* Company Name */}
               <FormInput
                 label="Company Name"
                 register={register}
@@ -99,19 +101,32 @@ const CreateJob = () => {
                 placeholder="Google, Microsoft, Amazon ....."
                 errors={errors}
               />
-              <LocationDropdown register={register}  label={"Location"} placeholder="India,Canada,USA ..." errors={errors} />
+              {/* Location Name */}
+              <LocationDropdown
+                register={register}
+                label={"Location"}
+                placeholder="India,Canada,USA ..."
+                errors={errors}
+              />
+                {/* Job Type - Enum[ 'Remote', 'Full-time','Part-time' .... ] */}
               <JobTypeSelect register={register} errors={errors} />
+              {/* Salary Range - min and max salary */}
               <SalaryRange register={register} errors={errors} />
+
+              {/* Applciation Deadline */}
               <DateInput
-  label="Application Deadline"
-  register={register}
-  name="applicationDeadLine"
-  min={new Date().toISOString().split("T")[0]}
-  errors={errors}
-/>
+                label="Application Deadline"
+                register={register}
+                name="applicationDeadLine"
+                min={new Date().toISOString().split("T")[0]}
+                errors={errors}
+              />
+              {/* Job Description */}
               <JobDescription register={register} errors={errors} />
             </div>
           </div>
+
+          {/* Action sych as - Save draf or submit */}
           <FormActions
             isValid={isValid}
             isSubmitting={isSubmitting}
@@ -119,6 +134,8 @@ const CreateJob = () => {
           />
         </form>
       </Modal>
+
+      {/* Tigger job creation modal */}
 
       <button
         onClick={open}

@@ -4,8 +4,8 @@ import React, { useState } from "react";
 import { Briefcase, ChevronDown } from "lucide-react";
 import { useRouter, usePathname, useSearchParams } from "next/navigation";
 import qs from "query-string";
-import { useDispatch } from "react-redux";
-import { setJobType } from "../store/slices/filter-slice";
+
+
 
 const jobTypes = [
   "Remote",
@@ -21,7 +21,7 @@ const JobTypeDropdown: React.FC = () => {
   const router = useRouter();
   const pathname = usePathname();
   const searchParams = useSearchParams();
-  const dispatch = useDispatch();
+
 
   const currentJobType = searchParams.get('jobType') as JobType | null;
   const [showDropdown, setShowDropdown] = useState(false);
@@ -45,7 +45,7 @@ const JobTypeDropdown: React.FC = () => {
 
     // Update URL and Redux state
     router.push(url);
-    dispatch(setJobType(jobType));
+
     setShowDropdown(false);
   };
 

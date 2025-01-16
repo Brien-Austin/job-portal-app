@@ -38,7 +38,7 @@ const DateInput = ({
           type="date"
           min={min}
           ref={inputRef}
-          className={`placeholder:font-[500] w-[376px] pl-3 pr-10 text-[18px] font-[600] h-[58px] border ${
+          className={` placeholder:font-[500] w-[376px] pl-3 pr-10 text-[18px] font-[600] h-[58px] border ${
             errors[name] ? 'border-red-500' : 'border-[#BCBCBC]'
           } rounded-[10px] focus:outline-none focus:border-[#00AAFF] ${className}`}
         />

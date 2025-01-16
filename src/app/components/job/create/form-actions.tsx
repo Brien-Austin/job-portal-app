@@ -17,6 +17,8 @@ const FormActions = ({ isValid, isSubmitting, watch }: FormActionsProps) => {
   };
 
   return (
+
+    // Save Draft
     <div className="mt-6 flex justify-between">
       <button
         type="button"
@@ -25,6 +27,8 @@ const FormActions = ({ isValid, isSubmitting, watch }: FormActionsProps) => {
       >
         Save Draft <ChevronsDown className="w-5 h-5" />
       </button>
+
+      {/* // Submit Button */}
       <button
         type="submit"
         className={`w-[232px] h-[59px] bg-[#00AAFF] text-[20px] flex gap-2 items-center justify-center text-white rounded-[10px] transition-colors ${

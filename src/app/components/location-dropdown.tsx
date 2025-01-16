@@ -5,14 +5,14 @@ import { MapPin, ChevronDown } from "lucide-react";
 import { countries } from "@/app/data/countries";
 import { useRouter, usePathname, useSearchParams } from "next/navigation";
 import qs from "query-string";
-import { useDispatch } from "react-redux";
-import { setLocation } from "../store/slices/filter-slice";
+
+
 
 const LocationDropdown: React.FC = () => {
   const router = useRouter();
   const pathname = usePathname();
   const searchParams = useSearchParams();
-  const dispatch = useDispatch();
+  
 
   const currentLocation = searchParams.get('location');
   const [showDropdown, setShowDropdown] = useState(false);
@@ -36,7 +36,7 @@ const LocationDropdown: React.FC = () => {
 
    
     router.push(url);
-    dispatch(setLocation(country));
+   
     setShowDropdown(false);
   };
 

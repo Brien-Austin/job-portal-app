@@ -5,7 +5,7 @@ import '@mantine/core/styles.css';
 import { ReactQueryClientProvider } from "./components/providers/reactquery";
 import {ColorSchemeScript, MantineProvider, mantineHtmlProps} from '@mantine/core'
 
-import { ReduxProvider } from "./components/providers/redux-provider";
+
 import { Suspense } from "react";
 
 
@@ -24,20 +24,20 @@ export default function RootLayout({
 }>) {
   return (
     <ReactQueryClientProvider>
-    <ReduxProvider>
+    
     <html lang="en" {...mantineHtmlProps}>
       <head><ColorSchemeScript/></head>
       <body
       
       >
        <MantineProvider> 
-        <Suspense fallback={<div>Loading</div>}>
+        <Suspense >
         {children}
         </Suspense>
        </MantineProvider>
       </body>
     </html>
-    </ReduxProvider>
+
     </ReactQueryClientProvider>
   );
 }

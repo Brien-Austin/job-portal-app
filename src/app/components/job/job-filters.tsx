@@ -2,19 +2,14 @@
 
 import { JobListing } from "@/types/job";
 import JobCard from "../job-card";
-// import { useSelector } from "react-redux";
-// import { RootState } from "@/app/store/store";
-// import { selectFilteredJobs } from "@/app/store/slices/filter-selector";
+
 
 interface JobFiltersProps {
   jobs: JobListing[];
 }
 
 const JobFilters: React.FC<JobFiltersProps> = ({ jobs }) => {
-//   const title = useSelector((state: RootState) => state.filter.title) || '';
-//   const location = useSelector((state: RootState) => state.filter.location) || '';
-//   const jobType = useSelector((state: RootState) => state.filter.jobtype);
-//   const maxSalary = useSelector((state: RootState) => state.filter.maxSalary);
+
 
 
 

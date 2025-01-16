@@ -9,10 +9,15 @@ import JobFilters from "../components/job/job-filters";
 import { useSearchParams } from "next/navigation";
 
 const App = () => {
+
   const searchParams = useSearchParams();
+  // Get all filter variables from url
   const title = searchParams.get('jobTitle') || '';
   const location = searchParams.get('location') || ''
   const jobType = searchParams.get('jobType') || '';
+  const maxSalary = searchParams.get('salary') || ''
+
+
 
   const { data: jobs, isLoading, error } = useQuery<JobListing[]>({
     queryKey: ["fetch-jobs"],
@@ -29,6 +34,7 @@ const App = () => {
   });
 
 
+  // Filtering functions
   const filteredJobs = useMemo(() => {
     if (!jobs) return [];
     if (!title.trim() && !location.trim() && !jobType.trim()) return jobs;
@@ -39,13 +45,16 @@ const App = () => {
       
       const locationMatch = !location.trim() || 
         job.location.toLowerCase() === location.toLowerCase().trim();
+
+        const salaryMatch = !maxSalary.trim() || (job.maxSalary / 12) / 1000 < parseFloat(maxSalary);
+
       
       const jobTypeMatch = !jobType.trim() || 
         job.jobType.toLowerCase() === jobType.toLowerCase().trim();
       
-      return titleMatch && locationMatch && jobTypeMatch;
+      return titleMatch && locationMatch && jobTypeMatch && salaryMatch;
     });
-  }, [jobs, title, location, jobType]);
+  }, [jobs, title, location, jobType,maxSalary]);
 
 
   if (isLoading) {
