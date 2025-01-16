@@ -11,11 +11,11 @@ export const postedAt = (date: string): string => {
   const hours = Math.floor(diffInSeconds / (60 * 60));
   const minutes = Math.floor(diffInSeconds / 60);
 
-  if (years > 0) return `${years}y`;
-  if (months > 0) return `${months}m`;
-  if (days > 0) return `${days}d`;
-  if (hours > 0) return `${hours}hr`;
-  if (minutes > 0) return `${minutes}m`;
+  if (years > 0) return `${years}y Ago`;
+  if (months > 0) return `${months}m Ago`;
+  if (days > 0) return `${days}d Ago`;
+  if (hours > 0) return `${hours}hr Ago`;
+  if (minutes > 0) return `${minutes}m Ago`;
 
   return "Just now";
 };

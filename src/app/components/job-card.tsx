@@ -1,3 +1,4 @@
+"use client"
 import React from 'react';
 import Image from 'next/image';
 import { UserRoundPlus, Building2, Layers } from 'lucide-react';
@@ -28,7 +29,7 @@ const JobCard:React.FC<JobListing> = ({
 
         {/* Posted Time */}
         <h1 className='bg-[#B0D9FF] text-black font-[500] px-2 py-1 rounded-[10px] text-[14px] h-fit'>
-          {postedAt(createdAt)} Ago
+          {postedAt(createdAt)} 
         </h1>
       </div>
 

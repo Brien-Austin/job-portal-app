@@ -6,10 +6,11 @@ import * as z from "zod";
 import { useForm } from "react-hook-form";
 import { jobSchema } from "@/types/job";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { ChevronsDown, ChevronsRight } from "lucide-react";
+import { ChevronDown, ChevronsDown, ChevronsRight } from "lucide-react";
 import axios from "axios";
 import { CREATE_JOB } from "../constants/constants";
 import { useRouter } from "next/navigation";
+
 
 const CreateJob = () => {
   const [opened, { open, close }] = useDisclosure(false);
@@ -41,6 +42,8 @@ const CreateJob = () => {
      
       reset();
       close();
+      
+      
       router.replace("/")
 
      
@@ -132,25 +135,27 @@ const CreateJob = () => {
               </div>
 
               {/* Job Type */}
-              <div className="flex flex-col-reverse">
-                <select
-                  {...register("jobType")}
-                  className={`peer placeholder:font-[500] w-[376px] pl-3 text-[18px] font-[600] h-[58px] border ${
-                    errors.jobType ? 'border-red-500' : 'border-[#BCBCBC]'
-                  } rounded-[10px] focus:outline-none focus:border-[#00AAFF]`}
-                >
-                  <option value="Full-time">Full-time</option>
-                  <option value="Part-time">Part-time</option>
-                  <option value="Contract">Contract</option>
-                  <option value="Internship">Internship</option>
-                </select>
-                <label className="text-[20px] font-medium text-[#636363] peer-focus:text-[#222222]">
-                  Job Type
-                </label>
-                {errors.jobType && (
-                  <span className="text-red-500 text-sm">{errors.jobType.message}</span>
-                )}
-              </div>
+              <div className="flex flex-col-reverse relative">
+  <select
+    {...register("jobType")}
+    className={`peer placeholder:font-[500] w-[376px] pl-3 pr-10 text-[18px] font-[600] h-[58px] border ${
+      errors.jobType ? 'border-red-500' : 'border-[#BCBCBC]'
+    } rounded-[10px] focus:outline-none focus:border-[#00AAFF]`}
+  >
+    <option value="Full-time">Full-time</option>
+    <option value="Part-time">Part-time</option>
+    <option value="Remote">Remote</option>
+    <option value="Contract">Contract</option>
+    <option value="Internship">Internship</option>
+  </select>
+  <label className="text-[20px] font-medium text-[#636363] peer-focus:text-[#222222]">
+    Job Type
+  </label>
+  {errors.jobType && (
+    <span className="text-red-500 text-sm">{errors.jobType.message}</span>
+  )}
+  <ChevronDown className="absolute right-4 top-1/2 transform -translate-y-1/2 text-[#636363] w-6 h-6" />
+</div>
 
               {/* Salary Range */}
               <div className="flex flex-col w-full">
