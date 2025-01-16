@@ -11,6 +11,8 @@ import { useSearchParams } from "next/navigation";
 const App = () => {
   const searchParams = useSearchParams();
   const title = searchParams.get('jobTitle') || '';
+  const location = searchParams.get('location') || ''
+  const jobType = searchParams.get('jobType') || '';
 
   const { data: jobs, isLoading, error } = useQuery<JobListing[]>({
     queryKey: ["fetch-jobs"],
@@ -29,12 +31,22 @@ const App = () => {
 
   const filteredJobs = useMemo(() => {
     if (!jobs) return [];
-    if (!title.trim()) return jobs;
+    if (!title.trim() && !location.trim() && !jobType.trim()) return jobs;
     
-    return jobs.filter((job) => 
-      job.jobTitle.toLowerCase().includes(title.toLowerCase().trim())
-    );
-  }, [jobs, title]);
+    return jobs.filter((job) => {
+      const titleMatch = !title.trim() || 
+        job.jobTitle.toLowerCase().includes(title.toLowerCase().trim());
+      
+      const locationMatch = !location.trim() || 
+        job.location.toLowerCase() === location.toLowerCase().trim();
+      
+      const jobTypeMatch = !jobType.trim() || 
+        job.jobType.toLowerCase() === jobType.toLowerCase().trim();
+      
+      return titleMatch && locationMatch && jobTypeMatch;
+    });
+  }, [jobs, title, location, jobType]);
+
 
   if (isLoading) {
     return (
