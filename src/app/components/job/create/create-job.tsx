@@ -35,13 +35,14 @@ const CreateJob = () => {
       jobType: "Full-time" as const,
       minSalary: 0,
       maxSalary: 0,
-      applicationDeadLine: new Date().toISOString().split("T")[0],
+      applicationDeadLine: new Date()
     },
   });
 
   const {
     handleSubmit,
     register,
+    setValue,
     watch,
     formState: { errors, isValid, isSubmitting },
     reset,
@@ -103,6 +104,7 @@ const CreateJob = () => {
               />
               {/* Location Name */}
               <LocationDropdown
+              setValue={setValue}
                 register={register}
                 label={"Location"}
                 placeholder="India,Canada,USA ..."
@@ -118,7 +120,7 @@ const CreateJob = () => {
                 label="Application Deadline"
                 register={register}
                 name="applicationDeadLine"
-                min={new Date().toISOString().split("T")[0]}
+                
                 errors={errors}
               />
               {/* Job Description */}
@@ -138,7 +140,7 @@ const CreateJob = () => {
       {/* Tigger job creation modal */}
 
       <button
-        onClick={open}
+        onClick={open} 
         className="w-[123px] h-[38px] bg-gradient-to-b from-[#A128FF] to-[#6100AD] text-white rounded-[30px] hover:opacity-90 transition-opacity"
       >
         Create Jobs

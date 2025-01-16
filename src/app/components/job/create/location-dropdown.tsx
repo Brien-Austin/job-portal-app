@@ -2,13 +2,14 @@ import { countries } from '@/app/data/countries';
 import { JobFormData } from '@/types/job';
 import { ChevronDown } from 'lucide-react';
 import React, { useState } from 'react';
-import { FieldErrors, UseFormRegister } from 'react-hook-form';
+import { FieldErrors, UseFormRegister, UseFormSetValue } from 'react-hook-form';
 
 interface LocationDropdownProps {
   label: string;
   placeholder: string;
   register: UseFormRegister<JobFormData>;
   errors: FieldErrors<JobFormData>;
+  setValue: UseFormSetValue<JobFormData>;
 }
 
 const LocationDropdown: React.FC<LocationDropdownProps> = ({
@@ -16,12 +17,12 @@ const LocationDropdown: React.FC<LocationDropdownProps> = ({
   placeholder,
   register,
   errors,
+  setValue,
 }) => {
   const [showDropdown, setShowDropdown] = useState(false);
-  const [selectedValue, setSelectedValue] = useState('');
 
   const handleSelect = (country: string) => {
-    setSelectedValue(country);
+    setValue('location', country); // Update the form state
     setShowDropdown(false);
   };
 
@@ -29,11 +30,10 @@ const LocationDropdown: React.FC<LocationDropdownProps> = ({
     <div className="relative flex flex-col-reverse">
       <div className="relative">
         <input
-          {...register("location")}
+          {...register('location')}
           placeholder={placeholder}
-          value={selectedValue}
           className={`placeholder:font-[500] w-[376px] pl-3 pr-10 text-[18px] font-[600] h-[58px] border ${
-            errors["location"] ? 'border-red-500' : 'border-[#BCBCBC]'
+            errors['location'] ? 'border-red-500' : 'border-[#BCBCBC]'
           } rounded-[10px] focus:outline-none focus:border-[#00AAFF]`}
           type="text"
           readOnly
@@ -45,11 +45,8 @@ const LocationDropdown: React.FC<LocationDropdownProps> = ({
           <ChevronDown />
         </span>
       </div>
-      <label className="text-[20px] font-medium text-[#636363]">
-        {label}
-      </label>
+      <label className="text-[20px] font-medium text-[#636363]">{label}</label>
 
-      {/* Dislaying all  the countries as Dropdown */}
       {showDropdown && (
         <div className="absolute top-[calc(100%)] left-0 w-full">
           <ul className="mt-[4px] z-10 bg-white border border-[#BCBCBC] rounded-[10px] max-h-40 overflow-y-auto w-[376px] shadow-sm">

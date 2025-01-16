@@ -1,4 +1,4 @@
-// components/JobDescription.tsx
+
 import { JobFormData } from "@/types/job";
 import React from "react";
 import { FieldErrors, UseFormRegister } from "react-hook-form";
@@ -13,7 +13,7 @@ const JobDescription = ({ register, errors }: JobDescriptionProps) => (
     <textarea
       {...register("jobDescription")}
       placeholder="Please share a description to let the candidate know more about the job role"
-      className={`peer placeholder:font-[500] placeholder:text-[16px] placeholder:py-3 placeholder:px-2 w-full pl-3 text-[18px] font-[600] h-[150px] border ${
+      className={`peer text-[16px] py-3 px-2 placeholder:font-[500] placeholder:text-[16px] placeholder:py placeholder:px-2 w-full pl-3  font-[600] h-[150px] border ${
         errors.jobDescription ? 'border-red-500' : 'border-[#BCBCBC]'
       } rounded-[10px] focus:outline-none focus:border-[#00AAFF] resize-none`}
     />

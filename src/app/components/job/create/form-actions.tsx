@@ -10,7 +10,10 @@ interface FormActionsProps {
   watch: UseFormWatch<JobFormData>;
 }
 
+
 const FormActions = ({ isValid, isSubmitting, watch }: FormActionsProps) => {
+    const currentValues = watch();
+    console.log(currentValues)
   const handleSaveDraft = () => {
     const currentValues = watch();
     console.log("Draft saved:", currentValues);
@@ -32,9 +35,9 @@ const FormActions = ({ isValid, isSubmitting, watch }: FormActionsProps) => {
       <button
         type="submit"
         className={`w-[232px] h-[59px] bg-[#00AAFF] text-[20px] flex gap-2 items-center justify-center text-white rounded-[10px] transition-colors ${
-          isSubmitting ? 'opacity-70' : 'hover:bg-[#0099ee]'
+          isValid ? 'opacity-70' : 'bg-[#b2d7eb] cursor-not-allowed'
         }`}
-        disabled={!isValid || isSubmitting}
+        disabled={!isValid}
       >
         {isSubmitting ? "Publishing..." : "Publish"} 
         <ChevronsRight className="w-5 h-5" />
